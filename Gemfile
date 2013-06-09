@@ -30,6 +30,13 @@ end
 
 gem 'jquery-rails'
 
+# パスワード暗号化	
+gem 'bcrypt-ruby', :require => "bcrypt"
+# 参考
+# http://ja.asciicasts.com/episodes/250-authentication-from-scratch
+
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -41,7 +41,7 @@ class ListsController < ApplicationController
   # POST /lists.json
   def create
     @list = List.new(params[:list])
-
+    @list.user_id = current_user.id
     respond_to do |format|
       if @list.save
         format.html { redirect_to @list, notice: 'List was successfully created.' }
@@ -57,7 +57,6 @@ class ListsController < ApplicationController
   # PUT /lists/1.json
   def update
     @list = List.find(params[:id])
-
     respond_to do |format|
       if @list.update_attributes(params[:list])
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
