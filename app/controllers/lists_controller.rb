@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    @lists = current_user.lists
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,16 @@ class ListsController < ApplicationController
   # GET /lists/1.json
   def show
     @list = List.find(params[:id])
-
+    @tasks = @list.tasks
+    @done_list = []
+    @undone_list = []
+    @tasks.each do |task|
+      if task[:done] == true
+        @done_list.push task
+      else
+        @undone_list.push task
+      end
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @list }

@@ -80,4 +80,35 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def done
+    @task = Task.find(params[:id])
+    @task.done = true
+
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.json { render json: @task, status: :created, location: @task }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def undone
+    @task = Task.find(params[:id])
+    @task.done = false
+
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.json { render json: @task, status: :created, location: @task }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+    
 end

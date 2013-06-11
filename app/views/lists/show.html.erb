@@ -1,15 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>User:</b>
-  <%= @list.user %>
-</p>
+<h3><%= link_to 'My Lists', lists_path %></h3>
 
-<p>
-  <b>Name:</b>
-  <%= @list.name %>
-</p>
+<div><%= @list.name %></div>
 
+<ul id="task_list">
+	<% @undone_list.each do |task| %>
+  		<li><input type="checkbox" name="todo_id" value="<%= task.id %>" class="todo_done"><%= task.name %></li>
+	<% end %>
+</ul>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<div><%= text_field :task, :name %></div>
+<input id="id_add_task" type="button" name="add" value="Add Task"/>
+
+<ul id="done_list">
+	<% @done_list.each do |task| %>
+  		<li><input type="checkbox" name="todo_id" value="<%= task.id %>" class="todo_undone" checked><%= task.name %></li>
+	<% end %>
+</ul>
+
+<input type="hidden" name="id" value="<%= @list.id %>" id="id_list_id">
