@@ -1,10 +1,19 @@
-<h1>Listing lists</h1>
-<h2><%= link_to 'New List', new_list_path %></h2>
-
-<% @lists.each do |list| %>
-
-  <div><%= link_to list.name, list %></div>
-
+<% content_for :header do %>
+	<div id="Nav">
+		<h2>My Lists</h2>
+		<%= link_to 'Create a new list', new_list_path %>
+	</div>
 <% end %>
 
-<br />
+<div class="recent">
+	<h1>MY LISTS</h1>
+	<ul class="mylists">
+	<% @lists.each do |list| %>
+		<% count = list.tasks.length > 4 ? 5 : list.tasks.length+1 %>
+		<li class="open-<%= count %>">
+			<%= link_to list.name, list %>
+			<span class="meta"> — <strong><%= list.tasks.length %> left</strong></span>
+		</li>
+	<% end %>
+	</ul>
+</div>

@@ -41,7 +41,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
-
+    @task.sort = 999999999999999
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
@@ -109,6 +109,21 @@ class TasksController < ApplicationController
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def sort
+    taskIds = params[:todo_ids]
+    prioritys = params[:prioritys]
+
+    taskIds.each_with_index do |id, index|
+      t = Task.find(id)
+      t.sort = prioritys[index]
+      t.save
+    end
+    respond_to do |format|
+      format.json { render json: nil, status: :ok }
+    end
+
   end
     
 end

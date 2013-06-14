@@ -4,21 +4,33 @@
   <title>TodoRails</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
   <link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
   <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+  <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="body">
+  <div id="Container">
+      <div id="Header">
+        <%= yield :header %>
+      </div>
+      <div class="Left">
+        <%= yield %>
+      </div>
+      <div class="Right">
+        <div class="greyoutlinebox">
+          <p>Your account</p>
+          <p><%= link_to "Log out", "/log_out" %>, <%= link_to "change password" %>, <%= link_to "change email" %> or 
+          <%= link_to "cancel account" %></p>
+        </div>
+      </div>
+      <div id="footer">
+        MADE BY <%= link_to "@dongriab", "http://twitter.com/@dongriab" %>
+      </div>
+    </div>
+  </div>
 
-<% flash.each do |name, msg| %>  
-    <%= content_tag :div, msg, :id => "flash#{name}" %>  
-<% end %>
-
-<%= yield %>
-
+<!--
 <hr/>
-
 <div id="user_nav">  
   <% if current_user %>  
     Logged in as <%= current_user.email %>  
@@ -28,6 +40,7 @@
     <%= link_to "Log in", log_in_path %>  
   <% end %>  
 </div>
+-->
 
 <script src="http://dongram.com/analytics/ga.js" type="text/javascript"></script>
 </body>

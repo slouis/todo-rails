@@ -1,5 +1,19 @@
-<h1>New list</h1>
+<% content_for :header do %>
+	<div id="Nav">
+		<h3>New list</h3>
+		<%= link_to 'My lists', lists_path %>
+	</div>
+<% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', lists_path %>
+<%= form_for(@list) do |f| %>
+	<div class="field">
+    	<h1 style="font-size: 16px;">
+        	Name your new list
+        	<span style="margin-left: 3px; color: #666; font-weight: normal; font-size: 10px;">(Ex: "Things I need to do today")</span>
+	    </h1>
+    	<%= f.text_field :name, :class=>"field-listname" %>
+	</div>
+	<div class="actions">
+    	<%= f.submit("Create this list", :class => "btn btn-large btn-block btn-info") %>
+	</div>
+<% end %>

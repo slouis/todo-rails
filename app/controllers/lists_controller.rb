@@ -44,6 +44,7 @@ class ListsController < ApplicationController
   # GET /lists/1/edit
   def edit
     @list = List.find(params[:id])
+    @tasks = @list.tasks
   end
 
   # POST /lists
@@ -68,6 +69,17 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     respond_to do |format|
       if @list.update_attributes(params[:list])
+        task_ids = params[:task_ids]
+        task_names = params[:task_names]
+        notin_ids = []
+        task_ids.each_with_index do |id, index|
+          task = Task.find(id)
+          task.name = task_names[index]
+          task.save
+          notin_ids.push task.id
+        end
+        Task.where('id not in (?)', notin_ids).destroy_all
+        
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
         format.json { head :no_content }
       else
@@ -88,4 +100,5 @@ class ListsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

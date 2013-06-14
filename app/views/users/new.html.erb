@@ -1,5 +1,29 @@
+<div class="sign-div">
 <h1>Sign Up</h1> 
 
-<%= render 'form' %>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= link_to 'Back', users_path %>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <dl>
+	<dt><%= f.label :email %></dt>
+	<dd><%= f.text_field :email %></dd>
+	<dt><%= f.label :username %></dt>
+    <dd><%= f.text_field :username %></dd>
+    <dt><%= f.label :password %></dt>
+    <dd><%= f.password_field :password %></dd>
+    <dt><%= f.label :password_confirmation, "Verify Password" %></dt>
+    <dd><%= f.password_field :password_confirmation, :size => 20 %></dd>
+    <dt>&nbsp;</dt>
+    <dd><%= f.submit("Sign Up", :class => "btn btn-large btn-block btn-info") %> or <%= link_to "Log in", log_in_path %> </dd>
+  </dl>
+<% end %>
+</div>

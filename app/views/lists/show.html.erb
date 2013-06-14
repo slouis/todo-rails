@@ -1,17 +1,34 @@
-<p id="notice"><%= notice %></p>
+<% content_for :header do %>
+	<div id="Nav">
+		<h2><%= @list.name %></h2>
+		<%= link_to 'My Lists', lists_path %>
+		|
+		<%= link_to 'Edit', edit_list_path(@list) %>
+	</div>
+<% end %>
+<!--
+<div class="ListHeader">
+	<h1><%= @list.name %></h1>
+</div>
+-->
 
-<h3><%= link_to 'My Lists', lists_path %></h3>
-
-<div><%= @list.name %></div>
-
-<ul id="task_list">
+<ul id="task_list" class="ui-sortable">
 	<% @undone_list.each do |task| %>
-  		<li><input type="checkbox" name="todo_id" value="<%= task.id %>" class="todo_done"><%= task.name %></li>
+  		<li class="task_list_li" task-id="<%= task.id %>">
+  			<input type="checkbox" name="todo_id" value="<%= task.id %>" class="todo_done"><%= task.name %>
+  		</li>
 	<% end %>
 </ul>
 
-<div><%= text_field :task, :name %></div>
-<input id="id_add_task" type="button" name="add" value="Add Task"/>
+<div id="additem">
+	<div><%= text_field :task, :name %></div>
+	<input id="id_add_task" type="button" name="add" value="Add Task" class="btn btn-large btn-block btn-info"/> | 
+	<%= link_to("Close", "#", {:id=>"close-item-link"}) %>
+</div>
+
+<div id="additem-link">
+	<%= link_to("Add another item", "#", {:id=>"add-item-link"}) %>
+</div>
 
 <ul id="done_list">
 	<% @done_list.each do |task| %>
@@ -20,3 +37,4 @@
 </ul>
 
 <input type="hidden" name="id" value="<%= @list.id %>" id="id_list_id">
+

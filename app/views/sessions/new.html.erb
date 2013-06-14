@@ -1,13 +1,13 @@
-<h1>Log in</h1>  
-  
+<div class="sign-div">
+<h1>Log in</h1> 
 <%= form_tag sessions_path do %>  
-  <p>  
-    <%= label_tag :email %><br />  
-    <%= text_field_tag :email, params[:email] %>  
-  </p>  
-  <p>  
-    <%= label_tag :password %><br />  
-    <%= password_field_tag :password %>  
-  </p>  
-  <p class="button"><%= submit_tag %></p>  
-<% end %>  
+  <dl>  
+    <dt><%= label_tag :email %></dt>
+    <dd><%= text_field_tag :email, params[:email] %></dd>
+    <dt><%= label_tag :password %></dt>
+    <dd><%= password_field_tag :password %></dd>
+    <dt>&nbsp;</dt>
+    <dd><%= submit_tag("Login", :class => "btn btn-large btn-block btn-info") %> or <%= link_to "Sign up", sign_up_path %></dd>
+  </dl>
+<% end %> 
+</div>
