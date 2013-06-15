@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TodoRails</title>
+  <title>iToDo</title>
+  <%= favicon_link_tag       "icon-todo.png" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
@@ -11,7 +12,9 @@
 <body id="body">
   <div id="Container">
       <div id="Header">
-        <%= yield :header %>
+        <div id="Nav">
+          <%= yield :header %>
+        </div>
       </div>
       <div class="Left">
         <%= yield %>
@@ -28,19 +31,6 @@
       </div>
     </div>
   </div>
-
-<!--
-<hr/>
-<div id="user_nav">  
-  <% if current_user %>  
-    Logged in as <%= current_user.email %>  
-    <%= link_to "Log out", log_out_path %>  
-  <% else %>  
-    <%= link_to "Sign up", sign_up_path %> or   
-    <%= link_to "Log in", log_in_path %>  
-  <% end %>  
-</div>
--->
 
 <script src="http://dongram.com/analytics/ga.js" type="text/javascript"></script>
 </body>

@@ -1,16 +1,15 @@
 <% content_for :header do %>
-  <div id="Nav">
-      <h2>Editing list</h2>
-      <%= link_to 'Cancel', @list %> | <%= link_to 'Delete this list', @list, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div>
+    <h2>Editing list</h2>
+    <%= link_to 'Cancel', @list %> | <%= link_to 'Delete this list', @list, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 <%= form_for(@list) do |f| %>
-  <h3>TITLE</h3>
+  
+  <h5>TITLE</h5>
   <div class="list_name">
     <%= f.text_field :name, :class=>"field-listname" %>
   </div>
 
-  <h3>ITEMS</h3>
+  <h5>ITEMS</h5>
 	<ul id="task_list">
 		<% @tasks.each do |task| %>
 	  		<li>
@@ -20,8 +19,10 @@
         </li>
 		<% end %>
 	</ul>
+  
   <div class="actions">
     <%= f.submit("Save this list", :class => "btn btn-large btn-block btn-info")%> | 
     <%= link_to 'Cancel', @list %>
   </div>
+
 <% end %>

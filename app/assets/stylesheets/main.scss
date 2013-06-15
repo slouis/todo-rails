@@ -2,9 +2,9 @@ body {
 	margin: 0 auto;
 	padding: 0;
 	font-family: "Lucida Grande", verdana, arial, helvetica, sans-serif;
-	color: #333;
+	color: #555;
 	background-color: #fff;
-	text-align: center;
+	text-align: left;
 }
 
 h1, h2, h3, h4, h5, h6, h7, p {
@@ -22,10 +22,6 @@ a{
 }
 
 a:hover{
-	/*
-	color: #FFF;
-	background:#000;
-	*/
 	color: #00BFFF;
 	text-decoration: underline;
 }
@@ -45,14 +41,19 @@ div#Container {
 	width: 100%;
 	margin: 0 0 20px 0;
 	text-align: left;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
+	background: url(icon-todo.png) top left no-repeat;
+	background-size: 48px 48px;
+	position: relative;
+	height: 48px;
 
 	#Nav {
-		float: left;
-		padding: 0 15px 0 0;
-		margin: 0 0 0 0;
-		background: url(/images/tada-header-bg.gif) top right no-repeat;
-		font-size: 11px;
+		position: absolute;
+		bottom: 0px;
+		padding-left: 60px;
+		h2{
+			font-size: 18px;
+		}
 	}
 }
 
@@ -191,6 +192,14 @@ div#Container {
 		width: 630px;
 		height: 10px;
 	}
+
+	.ListHeader{
+		margin-bottom: 10px;
+	}
+
+	.actions{
+		margin-top: 20px;
+	}
 }
 
 .Right {
@@ -215,7 +224,7 @@ div#footer {
 	font-size: 10px;
 	line-height: 14px;
 	color: #666;
-	text-align: left;
+	text-align: right;
 }
 
 

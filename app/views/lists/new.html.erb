@@ -1,8 +1,6 @@
 <% content_for :header do %>
-	<div id="Nav">
-		<h3>New list</h3>
-		<%= link_to 'My lists', lists_path %>
-	</div>
+	<h2>New list</h2>
+	<%= link_to 'My lists', lists_path %>
 <% end %>
 
 <%= form_for(@list) do |f| %>
