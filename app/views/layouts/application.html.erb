@@ -22,8 +22,12 @@
       <div class="Right">
         <div class="greyoutlinebox">
           <p>Your account</p>
-          <p><%= link_to "Log out", "/log_out" %>, <%= link_to "change password" %>, <%= link_to "change email" %> or 
-          <%= link_to "cancel account" %></p>
+          <p>
+            <%= link_to "Log out", "/log_out" %>, 
+            <%= link_to "change password", "/account/change_password" %>, 
+            <%= link_to "change email", "/account/change_email" %> or 
+            <%= link_to "cancel account" %>
+          </p>
         </div>
       </div>
       <div id="footer">
