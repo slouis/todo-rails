@@ -24,14 +24,14 @@
           <h4>Your account</h4>
           <p><%= current_user.username %> : <%= current_user.email %></p>
           <p>
-            <%= link_to "Log out", "/log_out" %>, 
+            <%= link_to "Log out",         "/log_out" %>, 
             <%= link_to "change password", "/account/change_password" %>, 
             <%= link_to "change email",    "/account/change_email" %> or 
             <%= link_to "cancel account",  "/account/cancel_account", data: { confirm: 'Are you sure?' } %>
           </p>
         </div>
       </div>
-      <div id="footer">
+      <div id="Footer">
         MADE BY <%= link_to "@dongriab", "http://twitter.com/@dongriab" %>
       </div>
     </div>

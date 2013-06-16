@@ -3,7 +3,21 @@ class ListsController < ApplicationController
   # GET /lists.json
   def index
     @lists = current_user.lists
-
+    @todolist = []
+    @donelist = []
+    @lists.each do |list|
+      tmp = []
+      list.tasks.each do |task|
+        if task.done == true
+          tmp.push task
+        end
+      end
+      if tmp.length == list.tasks.length
+        @donelist.push list
+      else
+        @todolist.push list
+      end
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lists }

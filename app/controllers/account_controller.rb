@@ -40,7 +40,7 @@ class AccountController < ApplicationController
 			end
 			user = User.find_by_email(params[:user][:new_email])
 			if user != nil
-				@user.errors.add("Email", "doesn't match confirmation")
+				@user.errors.add("Email", "has already been taken")
 			end
 
 			if @user.errors.any?

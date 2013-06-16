@@ -1,20 +1,13 @@
 TodoRails::Application.routes.draw do
-  get "sessions/new"
-
   resources :tasks
-
-
-  #resources :users
-
-
   resources :lists
-
-  get "log_in" => "sessions#new", :as => "log_in"
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "sign_up" => "users#new", :as => "sign_up" 
-  root :to => "lists#index"
   resources :users
   resources :sessions
+
+  get "log_in"  => "sessions#new", :as => "log_in"
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "sign_up" => "users#new", :as => "sign_up" 
+  root :to      => "lists#index"
 
 
   # The priority is based upon order of creation:

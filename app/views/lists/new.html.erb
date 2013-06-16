@@ -4,14 +4,14 @@
 <% end %>
 
 <%= form_for(@list) do |f| %>
-	<div class="field">
-    	<h6>
+	<div>
+    	<h3 class="field-list-label">
         	Name your new list
         	<span>(Ex: "Things I need to do today")</span>
-	    </h6>
-    	<%= f.text_field :name, :class=>"field-listname" %>
+	    </h3>
+    	<%= f.text_field :name, :class=>"field-list-name" %>
 	</div>
-	<div class="actions">
+	<div>
     	<%= f.submit("Create this list", :class => "btn btn-large btn-block btn-info") %>
 	</div>
 <% end %>

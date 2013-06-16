@@ -49,41 +49,34 @@ ToDoManager.prototype = {
     initialize:function(args){
     },
     
+    add_task: function(){
+    	var todo_manager = this;
+    	var listId = $("#hidden-list-id").val();
+    	var text   = $("#field-task-name").val();
+    	var url = "/tasks.json";
+    	if (text=="") return;
+		var data = {"task[list_id]":listId, "task[name]":text};
+		ajaxManager.post(url, data, function(result){
+			$("#field-task-name").val("");
+			$('<li />', {
+				id: 'loader-box',
+		        html: '<input type="checkbox" name="todo_id" value="'+result.id+'" class="todo_done">\n<span>'+result.name+'</span>'
+			}).addClass("task_list_li").attr("task-id",result.id).appendTo('#task-list').fadeIn("slow").effect("highlight", {}, 1000);
+			todo_manager.setup_done();
+		});
+		return false;
+	},
     setup_create:function(){
     	var todo_manager = this;
-    	$("#id_add_task").click(function(){
-	    	var listId = $("#id_list_id").val();
-	    	var text   = $("#task_name").val();
-	    	var url = "/tasks.json";
-	    	if (text=="") return;
-    		var data = {"task[list_id]":listId, "task[name]":text};
-			ajaxManager.post(url, data, function(result){
-				$("#task_name").val("");
-				$('<li />', {
-					id: 'loader-box',
-			        html: '<input type="checkbox" name="todo_id" value="'+result.id+'" class="todo_done">\n<span>'+result.name+'</span>'
-				}).addClass("task_list_li").attr("task-id",result.id).appendTo('#task_list').fadeIn("slow").effect("highlight", {}, 1000);
-				todo_manager.setup_done();
-			});
-			return false;
+    	$("#input-add-task").unbind('click');
+    	$("#input-add-task").click(function(){
+    		todo_manager.add_task();
 		});
 
-		$("#task_name").keypress(function( e ) {
+		$("#field-task-name").keypress(function( e ) {
 			var code = (e.keyCode ? e.keyCode : e.which);
 			if(code == 13) {
-				var listId = $("#id_list_id").val();
-		    	var text   = $("#task_name").val();
-		    	var url = "/tasks.json";
-		    	if (text=="") return;
-	    		var data = {"task[list_id]":listId, "task[name]":text};
-				ajaxManager.post(url, data, function(result){
-					$("#task_name").val("");
-					$('<li />', {
-						id: 'loader-box',
-				        html: '<input type="checkbox" name="todo_id" value="'+result.id+'" class="todo_done">\n<span>'+result.name+'</span>'
-					}).addClass("task_list_li").attr("task-id",result.id).appendTo('#task_list').fadeIn("slow").effect("highlight", {}, 1000);
-					todo_manager.setup_done();
-				});
+				todo_manager.add_task();
 			}
 		});
     },
@@ -101,7 +94,7 @@ ToDoManager.prototype = {
 				$('<li />', {
 					id: 'loader-box', 
 			        html: '<input type="checkbox" name="todo_id" value="'+result.id+'" class="todo_undone" checked><span>'+result.name+'</span>'
-				}).prependTo('#done_list').fadeIn("slow").effect("highlight", {}, 1000);
+				}).prependTo('#done-list').fadeIn("slow").effect("highlight", {}, 1000);
 				todo_manager.setup_undone();
 			});
 			return true;
@@ -121,7 +114,7 @@ ToDoManager.prototype = {
 				$('<li />', {
 					id: 'loader-box',  
 			        html: '<input type="checkbox" name="todo_id" value="'+result.id+'" class="todo_done"><span>'+result.name+'</span>'
-				}).appendTo('#task_list').fadeIn("slow").effect("highlight", {}, 1000);
+				}).appendTo('#task-list').fadeIn("slow").effect("highlight", {}, 1000);
 				todo_manager.setup_done();
 			});
 			return true;
@@ -129,7 +122,7 @@ ToDoManager.prototype = {
     },
 
     setup_sort:function(){
-    	$("#task_list").sortable({ items: 'li', cursor: 'move', opacity: 0.6 ,
+    	$("#task-list").sortable({ items: 'li', cursor: 'move', opacity: 0.6 ,
 			start: function(event, ui) { },
 	        change: function(event, ui) { },
 	        update: function(event, ui) {
@@ -146,7 +139,7 @@ ToDoManager.prototype = {
 				});
 			}
 		});
-		$("#task_list").disableSelection();
+		$("#task-list").disableSelection();
     },
 
     setup_delete:function(){
@@ -159,22 +152,19 @@ ToDoManager.prototype = {
     },
 
     setup_additem_link: function(){
-    	$("#add-item-link").unbind('click');
-    	$("#add-item-link").click(function(){
-    		$("#additem").show();
-    		$("#additem-link").hide();
-    		$("#close-item-link").click(function(){
-    			$("#additem").hide();
-    			$("#additem-link").show();
+    	$("#add-task-link").unbind('click');
+    	$("#add-task-link").click(function(){
+    		$("#add-task-form").show();
+    		$("#add-task-link").hide();
+    		$("#field-task-name").focus();
+    		$("#close-task-link").click(function(){
+    			$("#add-task-form").hide();
+    			$("#add-task-link").show();
     			return false;
     		});
     		return false;
     	});
     },
-
-	create:function(){
-
-	}
 
 };
 

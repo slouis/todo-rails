@@ -3,26 +3,24 @@
     <%= link_to 'Cancel', @list %> | <%= link_to 'Delete this list', @list, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 <%= form_for(@list) do |f| %>
-  
   <h5>TITLE</h5>
   <div class="list_name">
-    <%= f.text_field :name, :class=>"field-listname" %>
+    <%= f.text_field :name, :class=>"field-list-name" %>
   </div>
 
   <h5>ITEMS</h5>
-	<ul id="task_list_edit">
+	<ul id="task-list-edit">
 		<% @tasks.each do |task| %>
 	  		<li>
           <input type="hidden" name="task_ids[]" value="<%= task.id %>"/>
-          <input type="text" name="task_names[]" value="<%= task.name %>" class="field-taskname"/>
+          <input type="text" name="task_names[]" value="<%= task.name %>" class="field-task-name"/>
           <%= image_tag "delete.png", :class => "todo_delete" %>
         </li>
 		<% end %>
 	</ul>
   
-  <div class="actions">
+  <div>
     <%= f.submit("Save this list", :class => "btn btn-large btn-block btn-info")%> | 
     <%= link_to 'Cancel', @list %>
   </div>
-
 <% end %>

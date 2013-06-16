@@ -9,7 +9,7 @@
 	<h3><%= @list.name %></h3>
 </div>
 
-<ul id="task_list" class="ui-sortable">
+<ul id="task-list" class="ui-sortable">
 	<% @undone_list.each do |task| %>
   		<li class="task_list_li" task-id="<%= task.id %>">
   			<input type="checkbox" name="todo_id" value="<%= task.id %>" class="todo_done"><%= task.name %>
@@ -17,20 +17,20 @@
 	<% end %>
 </ul>
 
-<div id="additem">
-	<div><%= text_field :task, :name %></div>
-	<input id="id_add_task" type="button" name="add" value="Add Task" class="btn btn-small btn-block btn-info"/> | 
-	<%= link_to("Close", "#", {:id=>"close-item-link"}) %>
+<div id="add-task-form">
+	<div><%= text_field :task, :name, {:id=> "field-task-name"} %></div>
+	<input id="input-add-task" type="button" name="add" value="Add Task" class="btn btn-small btn-block btn-info"/> | 
+	<%= link_to("Close", "#", {:id=>"close-task-link"}) %>
 </div>
 
-<div id="additem-link">
+<div id="add-task-link">
 	<%= link_to("Add another item", "#", {:id=>"add-item-link"}) %>
 </div>
 
-<ul id="done_list">
+<ul id="done-list">
 	<% @done_list.each do |task| %>
   		<li><input type="checkbox" name="todo_id" value="<%= task.id %>" class="todo_undone" checked><%= task.name %></li>
 	<% end %>
 </ul>
 
-<input type="hidden" name="id" value="<%= @list.id %>" id="id_list_id">
+<input type="hidden" name="id" value="<%= @list.id %>" id="hidden-list-id">
