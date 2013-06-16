@@ -12,7 +12,7 @@ class ListsController < ApplicationController
           tmp.push task
         end
       end
-      if tmp.length == list.tasks.length
+      if tmp.length == list.tasks.length && list.tasks.length != 0
         @donelist.push list
       else
         @todolist.push list

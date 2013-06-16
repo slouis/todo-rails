@@ -16,9 +16,8 @@
 	</ul>
 	<div class="complete">
 		Completed lists: 
-		<% @donelist.each do |list| %>
-			<span><%= link_to list.name, list %>,</span>
+		<% @donelist.each_with_index do |list, index| %>
+			<span><%= link_to list.name, list %><%= "," if (@donelist.length-1 != index) %></span>
 		<% end %>
 	</div>
 </div>
-
