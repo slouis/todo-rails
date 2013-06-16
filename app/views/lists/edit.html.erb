@@ -10,7 +10,7 @@
   </div>
 
   <h5>ITEMS</h5>
-	<ul id="task_list">
+	<ul id="task_list_edit">
 		<% @tasks.each do |task| %>
 	  		<li>
           <input type="hidden" name="task_ids[]" value="<%= task.id %>"/>

@@ -72,13 +72,17 @@ class ListsController < ApplicationController
         task_ids = params[:task_ids]
         task_names = params[:task_names]
         notin_ids = []
-        task_ids.each_with_index do |id, index|
-          task = Task.find(id)
-          task.name = task_names[index]
-          task.save
-          notin_ids.push task.id
+        if task_ids == nil
+          @list.tasks.destroy_all
+        else
+          task_ids.each_with_index do |id, index|
+            task = Task.find(id)
+            task.name = task_names[index]
+            task.save
+            notin_ids.push task.id
+          end
+          Task.where('id not in (?)', notin_ids).destroy_all
         end
-        Task.where('id not in (?)', notin_ids).destroy_all
         
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
         format.json { head :no_content }

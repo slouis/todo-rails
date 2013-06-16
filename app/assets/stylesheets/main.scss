@@ -150,6 +150,7 @@ div#Container {
 			vertical-align: top;
 			padding-bottom: 4px;
 			list-style-type: none;
+			cursor: row-resize;
 		}
 	}
 
@@ -163,6 +164,23 @@ div#Container {
 			vertical-align: top;
 			padding-bottom: 4px;
 			list-style-type: none;
+		}
+	}
+
+
+	ul#task_list_edit {
+		margin: 0;
+		padding: 0;
+		li {
+			font-size: 16px;
+			line-height: 1.3em;
+			color: #000;
+			vertical-align: top;
+			padding-bottom: 4px;
+			list-style-type: none;
+		}
+		.todo_delete{
+			cursor: pointer;
 		}
 	}
 
@@ -244,6 +262,26 @@ div#footer {
 	dd{
 		margin-bottom: 20px;
 	}
+	input {
+		width: 200px;
+	}
+
+	h1{
+		font-size: 19px;
+		margin: 10px 0 20px;
+	}
+	h3{
+		font-size: 15px;
+		margin: 10px 0 10px;
+	}
+}
+
+.account-div{
+	border: 2px solid #efefef;
+	padding: 20px;
+	width: 450px;
+	border-radius: 10px;
+	margin-bottom: 50px;
 	input {
 		width: 200px;
 	}

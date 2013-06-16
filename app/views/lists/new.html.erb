@@ -5,10 +5,10 @@
 
 <%= form_for(@list) do |f| %>
 	<div class="field">
-    	<h1 style="font-size: 16px;">
+    	<h6>
         	Name your new list
-        	<span style="margin-left: 3px; color: #666; font-weight: normal; font-size: 10px;">(Ex: "Things I need to do today")</span>
-	    </h1>
+        	<span>(Ex: "Things I need to do today")</span>
+	    </h6>
     	<%= f.text_field :name, :class=>"field-listname" %>
 	</div>
 	<div class="actions">

@@ -17,15 +17,13 @@
 	    </div>
 	  <% end %>
 
-	<h1>Change your password</h1> 
-	<%= form_tag("/account/change_password", :method=>"POST") do %>
-		<h3>ENTER YOUR CURRENT PASSWORD</h3>
-	    <%= password_field_tag :existing_password %>
-		<h3>ENTER A NEW PASSWORD</h3>
-	    <%= password_field_tag :new_password %>
-		<h3>TYPE YOUR NEW PASSWORD AGAIN</h3>
-	    <%= password_field_tag :new_password_confirmation %>
+	<h1>Change your email address</h1> 
+	<%= form_for(@user, :url=>{:action=>"change_email"}, :method=>"POST") do |f| %>
+		<h3>ENTER A NEW EMAIL ADDRESS</h3>
+	    <%= f.text_field :new_email %>
+		<h3>TYPE THAT EMAIL ADDRESS AGAIN</h3>
+	    <%= f.text_field :new_email_confirmation %>
 	    <h3>&nbsp;</h3>
-	    <%= submit_tag("Save my new password", :class => "btn btn-large btn-block btn-info") %>
+	    <%= f.submit("Save my new email", :class => "btn btn-large btn-block btn-info") %>
 	<% end %>
 </div>

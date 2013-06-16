@@ -19,7 +19,7 @@
 
 <div id="additem">
 	<div><%= text_field :task, :name %></div>
-	<input id="id_add_task" type="button" name="add" value="Add Task" class="btn btn-large btn-block btn-info"/> | 
+	<input id="id_add_task" type="button" name="add" value="Add Task" class="btn btn-small btn-block btn-info"/> | 
 	<%= link_to("Close", "#", {:id=>"close-item-link"}) %>
 </div>
 
@@ -34,4 +34,3 @@
 </ul>
 
 <input type="hidden" name="id" value="<%= @list.id %>" id="id_list_id">
-
