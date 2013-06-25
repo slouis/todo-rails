@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 # Heroku
 group :production do
-  gem 'pg'
+  gem 'mysql2'
 end
 
 # Local develop
