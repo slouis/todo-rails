@@ -7,11 +7,17 @@ todo 예제 소스가 있으면 좋겠다는 생각이 들어서 간단한 sampl
 ## Todo
 
 * (v) Ruby + Rails <https://github.com/dongram/todo-rails>
+ 
 * (v) Scala + Play2 <https://github.com/dongram/todo-scala-play2/>
+ 
 * NodeJS + CompoundJS
+ 
 * Python + Django
+ 
 * Java + Spring Framework
+ 
 * ObjectiveC (for iOS)
+
 * ObjectiveC (for Mac)
 
 ## How to 
