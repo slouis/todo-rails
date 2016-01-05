@@ -27,6 +27,14 @@ input {
 
 /********* content *********/
 
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
 #body {
 	margin: 0 auto;
 	padding: 0;
