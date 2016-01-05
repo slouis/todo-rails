@@ -27,10 +27,10 @@
 	<%= link_to("Add another item", "#", {:id=>"add-item-link"}) %>
 </div>
 
-<ul id="done-list">
+<ul id="done-list" class="no-print">
 	<% @done_list.each do |task| %>
   		<li><input type="checkbox" name="todo_id" value="<%= task.id %>" class="todo_undone" checked><%= task.name %></li>
 	<% end %>
 </ul>
 
-<input type="hidden" name="id" value="<%= @list.id %>" id="hidden-list-id">
+<input type="hidden" name="id" value="<%= @list.id %>" id="hidden-list-id" class="no-print">
