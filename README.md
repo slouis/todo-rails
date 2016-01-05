@@ -16,4 +16,6 @@ $ heroku create itodo
 
 $ git push heroku master
 
+$ heroku addons:create heroku-postgresql
+
 $ heroku rake db:migrate

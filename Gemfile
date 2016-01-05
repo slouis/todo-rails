@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 # Heroku
 group :production do
   gem 'mysql2'
+  gem 'activerecord-postgresql-adapter'
 end
 
 # Local develop
