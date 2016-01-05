@@ -19,3 +19,7 @@ $ git push heroku master
 $ heroku addons:create heroku-postgresql
 
 $ heroku rake db:migrate
+
+tips
+===========
+$ heroku pg:psql
